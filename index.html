@@ -1,117 +1,1455 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>NCYTI — National Competition for Young Transport Innovators</title>
-<meta name="description" content="The National Competition for Young Transport Innovators (NCYTI / NSMDI) — the Czech national competition for young transport innovators, held annually since 2013.">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="stylesheet" href="/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#34386b">
+  <title>National Competition for Young Transport Innovators</title>
+  <style>
+    :root {
+      --purple: #34386b;
+      --purple-dark: #25284f;
+      --purple-light: #51568f;
+      --orange: #d84a28;
+      --orange-light: #f0784e;
+      --yellow: #ffe9ad;
+      --cream: #faf8f2;
+      --white: #ffffff;
+      --ink: #252747;
+      --muted: #77798d;
+      --line: #e9e6dc;
+      --green: #a9c9ae;
+      --shadow: 0 16px 45px rgba(37, 40, 79, .09);
+      --heading: "Arial Black", Arial, sans-serif;
+      --body: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: var(--body);
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    /* Header */
+
+    .top-strip {
+      background: var(--purple-dark);
+      color: rgba(255,255,255,.78);
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .top-strip-inner {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-strip-label {
+      color: var(--yellow);
+    }
+
+    .top-strip-mark {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .top-strip-mark::before {
+      content: "";
+      display: block;
+      width: 7px;
+      height: 7px;
+      background: var(--orange);
+      transform: rotate(45deg);
+    }
+
+    .header-main {
+      background: var(--purple);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-main::after {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 50%;
+      right: -130px;
+      top: -310px;
+      box-shadow:
+        0 0 0 35px rgba(255,255,255,.025),
+        0 0 0 75px rgba(255,255,255,.025);
+      pointer-events: none;
+    }
+
+    .brand-row {
+      min-height: 114px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-copy {
+      max-width: 780px;
+    }
+
+    .brand-copy h1 {
+      font-family: var(--heading);
+      font-size: clamp(23px, 3.3vw, 39px);
+      font-style: italic;
+      font-weight: 900;
+      letter-spacing: -1.8px;
+      line-height: 1.12;
+      text-transform: uppercase;
+    }
+
+    .brand-copy p {
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-top: 9px;
+    }
+
+    .edition-stamp {
+      width: 92px;
+      height: 92px;
+      border: 1px solid rgba(255,255,255,.36);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-shrink: 0;
+      color: var(--yellow);
+      font-family: var(--heading);
+      font-style: italic;
+      font-size: 12px;
+      line-height: 1.4;
+      transform: rotate(9deg);
+      position: relative;
+    }
+
+    .edition-stamp::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border: 1px dashed rgba(255,233,173,.5);
+      border-radius: 50%;
+    }
+
+    .navigation {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav-inner {
+      min-height: 63px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .nav-brand {
+      color: var(--purple);
+      font-family: var(--heading);
+      font-size: 19px;
+      font-style: italic;
+      letter-spacing: -1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+    }
+
+    .nav-links a {
+      color: #575970;
+      font-size: 12px;
+      font-weight: 700;
+      transition: color .2s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 3px;
+      background: var(--orange);
+      transition: width .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+
+    .hero {
+      background: var(--purple);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      padding: 91px 0 84px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 590px;
+      height: 590px;
+      right: -130px;
+      top: -120px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 45px rgba(255,255,255,.025),
+        0 0 0 95px rgba(255,255,255,.025),
+        0 0 0 145px rgba(255,255,255,.02);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: var(--orange);
+      border-radius: 50%;
+      right: 11%;
+      bottom: -150px;
+      opacity: .8;
+    }
+
+    .hero-content {
+      max-width: 820px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--purple);
+      padding: 7px 13px;
+      border-radius: 2px;
+      font-size: 10px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 26px;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+
+    .hero h2 {
+      font-family: var(--heading);
+      font-size: clamp(36px, 6.2vw, 76px);
+      line-height: 1.08;
+      font-style: italic;
+      letter-spacing: -3px;
+      max-width: 850px;
+      margin-bottom: 27px;
+    }
+
+    .hero-description {
+      max-width: 760px;
+      color: rgba(255,255,255,.82);
+      font-size: 15px;
+      line-height: 1.95;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 38px;
+    }
+
+    .stat-tag {
+      padding: 10px 17px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.18);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .7px;
+    }
+
+    .stat-tag.highlight {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    /* Feature cards */
+
+    .features-section {
+      position: relative;
+      z-index: 3;
+      margin-top: -32px;
+      padding-bottom: 85px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 31px 27px 29px;
+      min-height: 290px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 5px;
+      width: 100%;
+      background: var(--orange);
+    }
+
+    .feature-card:nth-child(2)::before {
+      background: var(--purple-light);
+    }
+
+    .feature-card:nth-child(3)::before {
+      background: #e8bd55;
+    }
+
+    .card-number {
+      font-family: var(--heading);
+      font-style: italic;
+      font-size: 38px;
+      line-height: 1;
+      color: rgba(52,56,107,.13);
+      margin-bottom: 21px;
+    }
+
+    .feature-card h3 {
+      font-family: var(--heading);
+      font-size: 19px;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .feature-card h4 {
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 17px;
+    }
+
+    .feature-card p {
+      color: #66697d;
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .feature-card strong {
+      color: var(--purple);
+      font-weight: 800;
+    }
+
+    /* Panel section */
+
+    .panel-section {
+      padding: 72px 0 88px;
+      background: #efede5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-section::before {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border: 1px solid rgba(52,56,107,.09);
+      border-radius: 50%;
+      left: -270px;
+      top: -180px;
+      box-shadow: 0 0 0 35px rgba(52,56,107,.025), 0 0 0 75px rgba(52,56,107,.025);
+    }
+
+    .panel-layout {
+      display: grid;
+      grid-template-columns: 1fr .88fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-kicker {
+      color: var(--orange);
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 900;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 18px;
+    }
+
+    .section-kicker::before {
+      content: "";
+      width: 28px;
+      height: 3px;
+      background: var(--orange);
+    }
+
+    .section-title {
+      font-family: var(--heading);
+      font-size: clamp(28px, 4vw, 43px);
+      line-height: 1.2;
+      font-style: italic;
+      letter-spacing: -1.5px;
+      color: var(--purple);
+      margin-bottom: 22px;
+    }
+
+    .panel-copy > p {
+      font-size: 14px;
+      line-height: 1.95;
+      color: #65677a;
+      max-width: 580px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 29px;
+    }
+
+    .block-button {
+      min-height: 49px;
+      padding: 0 23px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 17px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .block-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 9px 20px rgba(37,40,79,.15);
+    }
+
+    .button-orange {
+      color: var(--white);
+      background: var(--orange);
+    }
+
+    .button-purple {
+      color: var(--white);
+      background: var(--purple);
+    }
+
+    .button-yellow {
+      color: var(--purple);
+      background: var(--yellow);
+    }
+
+    .button-arrow {
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    /* Award photo placeholders */
+
+    .photo-wall {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      grid-template-rows: 155px 155px;
+      gap: 12px;
+      transform: rotate(1.5deg);
+    }
+
+    .award-photo-slot {
+      position: relative;
+      overflow: hidden;
+      background-color: #c8c7bb;
+      border: 7px solid var(--white);
+      box-shadow: 0 12px 30px rgba(37,40,79,.12);
+      min-width: 0;
+    }
+
+    .award-photo-slot:first-child {
+      grid-row: span 2;
+      background:
+        radial-gradient(ellipse at 45% 48%, rgba(255,233,173,.85) 0 5%, transparent 5.5%),
+        radial-gradient(ellipse at 65% 55%, rgba(52,56,107,.7) 0 10%, transparent 10.5%),
+        radial-gradient(ellipse at 25% 60%, rgba(216,74,40,.7) 0 12%, transparent 12.5%),
+        linear-gradient(145deg, #7b83a1, #d7c9aa 55%, #89968a);
+    }
+
+    .award-photo-slot:nth-child(2) {
+      background:
+        radial-gradient(ellipse at 70% 32%, rgba(255,233,173,.9) 0 12%, transparent 12.5%),
+        radial-gradient(ellipse at 38% 45%, rgba(52,56,107,.8) 0 13%, transparent 13.5%),
+        linear-gradient(145deg, #b4c5bb, #d6b98f 60%, #8b91a9);
+    }
+
+    .award-photo-slot:nth-child(3) {
+      background:
+        radial-gradient(ellipse at 20% 40%, rgba(255,233,173,.85) 0 11%, transparent 11.5%),
+        radial-gradient(ellipse at 65% 55%, rgba(216,74,40,.7) 0 13%, transparent 13.5%),
+        linear-gradient(135deg, #b2b5c4, #e0d2b3 55%, #798e8a);
+    }
+
+    .award-photo-slot::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(0deg, rgba(37,40,79,.24), transparent 60%),
+        repeating-linear-gradient(115deg, transparent 0 35px, rgba(255,255,255,.1) 36px 38px);
+    }
+
+    .award-photo-slot::after {
+      content: "";
+      position: absolute;
+      width: 75%;
+      height: 35%;
+      left: 12%;
+      bottom: -10%;
+      background: rgba(52,56,107,.17);
+      filter: blur(12px);
+      border-radius: 50%;
+    }
+
+    /* About section */
+
+    .about-section {
+      padding: 100px 0 90px;
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .about-intro {
+      position: sticky;
+      top: 115px;
+    }
+
+    .about-intro .section-title {
+      max-width: 440px;
+    }
+
+    .about-intro > p {
+      color: #6e7081;
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+    .about-decoration {
+      width: 100%;
+      max-width: 280px;
+      height: 7px;
+      margin-top: 32px;
+      background: linear-gradient(90deg, var(--orange) 0 35%, var(--yellow) 35% 65%, var(--purple) 65%);
+    }
+
+    .about-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .detail-item {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .detail-item:first-child {
+      border-top: 1px solid var(--line);
+    }
+
+    .detail-label {
+      color: var(--orange);
+      font-size: 10px;
+      letter-spacing: 1.4px;
+      font-weight: 900;
+      text-transform: uppercase;
+      padding-top: 4px;
+    }
+
+    .detail-item p {
+      color: #65677a;
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .detail-item strong {
+      color: var(--purple);
+    }
+
+    /* Timeline */
+
+    .timeline-section {
+      background: var(--purple);
+      padding: 88px 0 100px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-section::before {
+      content: "";
+      position: absolute;
+      width: 530px;
+      height: 530px;
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 50%;
+      right: -300px;
+      bottom: -330px;
+      box-shadow: 0 0 0 40px rgba(255,255,255,.025), 0 0 0 80px rgba(255,255,255,.02);
+    }
+
+    .timeline-header {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 58px;
+    }
+
+    .timeline-header .section-kicker {
+      color: var(--yellow);
+    }
+
+    .timeline-header .section-kicker::before {
+      background: var(--orange-light);
+    }
+
+    .timeline-header .section-title {
+      color: var(--white);
+      max-width: 760px;
+      margin-bottom: 0;
+    }
+
+    .timeline-track {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      position: relative;
+      gap: 0;
+      z-index: 1;
+    }
+
+    .timeline-track::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 13px;
+      height: 2px;
+      background: rgba(255,255,255,.25);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 17px 0 0;
+    }
+
+    .timeline-dot {
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      background: var(--yellow);
+      border: 6px solid var(--purple);
+      outline: 1px solid var(--yellow);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 29px;
+    }
+
+    .timeline-item:nth-child(2) .timeline-dot {
+      background: var(--orange);
+      outline-color: var(--orange);
+    }
+
+    .timeline-item:nth-child(3) .timeline-dot {
+      background: #a9c9ae;
+      outline-color: #a9c9ae;
+    }
+
+    .timeline-item:nth-child(4) .timeline-dot {
+      background: var(--orange);
+      outline-color: var(--orange);
+    }
+
+    .timeline-item:nth-child(5) .timeline-dot {
+      background: var(--yellow);
+      outline-color: var(--yellow);
+    }
+
+    .timeline-stage {
+      color: var(--yellow);
+      font-family: var(--heading);
+      font-style: italic;
+      font-size: 14px;
+      line-height: 1.45;
+      margin-bottom: 13px;
+      max-width: 180px;
+    }
+
+    .timeline-when {
+      color: rgba(255,255,255,.66);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .timeline-item:nth-child(4) .timeline-when {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      padding: 5px 9px;
+    }
+
+    /* Bottom navigation */
+
+    .closing-section {
+      background: var(--cream);
+      padding: 76px 0;
+    }
+
+    .closing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .closing-card {
+      min-height: 180px;
+      padding: 32px 35px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s ease;
+    }
+
+    .closing-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .closing-card.history {
+      background: var(--yellow);
+      color: var(--purple);
+    }
+
+    .closing-card.contact {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .closing-card::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      right: -45px;
+      bottom: -95px;
+      opacity: .18;
+      box-shadow: 0 0 0 20px rgba(255,255,255,.06), 0 0 0 45px rgba(255,255,255,.04);
+    }
+
+    .closing-card h3 {
+      font-family: var(--heading);
+      font-size: 22px;
+      font-style: italic;
+      letter-spacing: -.6px;
+      line-height: 1.25;
+      max-width: 320px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .closing-card .card-arrow {
+      font-size: 25px;
+      font-weight: 900;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Footer */
+
+    .footer {
+      background: var(--purple-dark);
+      color: var(--white);
+      padding: 59px 0 30px;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 60px;
+      padding-bottom: 45px;
+    }
+
+    .footer-title {
+      font-family: var(--heading);
+      font-size: 22px;
+      line-height: 1.4;
+      font-style: italic;
+      letter-spacing: -.6px;
+      max-width: 500px;
+      margin-bottom: 13px;
+    }
+
+    .footer-subtitle {
+      color: rgba(255,255,255,.58);
+      font-size: 11px;
+      letter-spacing: .7px;
+      line-height: 1.8;
+    }
+
+    .footer-contact {
+      border-left: 2px solid var(--orange);
+      padding-left: 25px;
+      align-self: center;
+    }
+
+    .footer-contact h4 {
+      color: var(--yellow);
+      font-size: 10px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .footer-contact a {
+      font-size: 14px;
+      color: var(--white);
+      font-weight: 700;
+      transition: color .2s ease;
+    }
+
+    .footer-contact a:hover {
+      color: var(--yellow);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,.38);
+      font-size: 10px;
+      letter-spacing: .7px;
+    }
+
+    .footer-accent {
+      display: flex;
+      gap: 5px;
+    }
+
+    .footer-accent span {
+      width: 17px;
+      height: 5px;
+      background: var(--orange);
+    }
+
+    .footer-accent span:nth-child(2) {
+      background: var(--yellow);
+    }
+
+    .footer-accent span:nth-child(3) {
+      background: #a9c9ae;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .container {
+        width: min(100% - 42px, 720px);
+      }
+
+      .brand-row {
+        min-height: 100px;
+      }
+
+      .edition-stamp {
+        width: 75px;
+        height: 75px;
+        font-size: 10px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .feature-card:last-child {
+        grid-column: span 2;
+        min-height: 230px;
+      }
+
+      .panel-layout {
+        gap: 35px;
+      }
+
+      .about-grid {
+        gap: 45px;
+      }
+
+      .timeline-track {
+        grid-template-columns: repeat(5, 190px);
+        overflow-x: auto;
+        padding: 5px 5px 25px;
+        scrollbar-color: var(--orange) rgba(255,255,255,.12);
+        scrollbar-width: thin;
+      }
+
+      .timeline-track::before {
+        right: auto;
+        width: 950px;
+      }
+
+      .timeline-item {
+        min-height: 170px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: calc(100% - 36px);
+      }
+
+      .top-strip-inner {
+        min-height: 34px;
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .brand-row {
+        min-height: 100px;
+        gap: 10px;
+      }
+
+      .brand-copy h1 {
+        font-size: 22px;
+        letter-spacing: -1px;
+      }
+
+      .brand-copy p {
+        font-size: 9px;
+        letter-spacing: .7px;
+        line-height: 1.6;
+      }
+
+      .edition-stamp {
+        width: 62px;
+        height: 62px;
+        font-size: 9px;
+      }
+
+      .edition-stamp::before {
+        inset: 4px;
+      }
+
+      .nav-inner {
+        min-height: auto;
+        display: block;
+        padding-top: 12px;
+      }
+
+      .nav-brand {
+        display: none;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 0;
+        justify-content: space-between;
+        overflow-x: auto;
+        padding-bottom: 12px;
+      }
+
+      .nav-links a {
+        font-size: 10px;
+        white-space: nowrap;
+        margin-right: 15px;
+      }
+
+      .hero {
+        padding: 65px 0 73px;
+      }
+
+      .hero h2 {
+        font-size: clamp(35px, 10vw, 53px);
+        letter-spacing: -1.7px;
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-stats {
+        gap: 8px;
+        margin-top: 27px;
+      }
+
+      .stat-tag {
+        font-size: 9px;
+        padding: 8px 10px;
+      }
+
+      .features-section {
+        padding-bottom: 55px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .feature-card,
+      .feature-card:last-child {
+        grid-column: auto;
+        min-height: auto;
+        padding: 25px 23px;
+      }
+
+      .card-number {
+        font-size: 30px;
+        margin-bottom: 13px;
+      }
+
+      .panel-section {
+        padding: 65px 0;
+      }
+
+      .panel-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .section-title {
+        font-size: 31px;
+      }
+
+      .photo-wall {
+        grid-template-rows: 130px 130px;
+        gap: 9px;
+      }
+
+      .about-section {
+        padding: 70px 0;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .about-intro {
+        position: static;
+      }
+
+      .detail-item {
+        grid-template-columns: 85px 1fr;
+        gap: 12px;
+        padding: 20px 0;
+      }
+
+      .timeline-section {
+        padding: 68px 0 72px;
+      }
+
+      .timeline-header {
+        margin-bottom: 39px;
+      }
+
+      .timeline-track {
+        grid-template-columns: repeat(5, 175px);
+      }
+
+      .closing-section {
+        padding: 52px 0;
+      }
+
+      .closing-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .closing-card {
+        min-height: 150px;
+        padding: 25px;
+      }
+
+      .footer {
+        padding: 45px 0 25px;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-bottom: 35px;
+      }
+
+      .footer-title {
+        font-size: 19px;
+      }
+
+      .footer-contact {
+        padding-left: 17px;
+      }
+
+      .footer-bottom {
+        gap: 15px;
+        flex-wrap: wrap;
+        font-size: 9px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header class="sitehead">
-  <div class="container">
-    <div class="kicker">Est. 2013 · Czech Republic</div>
-    <h1>National Competition for Young Transport Innovators</h1>
-    <div class="czech">Národní soutěž mladých dopravních inovátorů · NSMDI</div>
-    <div class="badges">
-      <span class="pill">13 editions</span>
-      <span class="pill">Annual</span>
-      <span class="pill gold">2025 (13th) edition complete</span>
-    </div>
-  </div>
-</header>
-
-<nav class="nav">
-  <ul>
-    <li class="active"><a href="/">Home</a></li>
-    <li><a href="/2025/judging-panel/">2025 Judging Panel</a></li>
-    <li><a href="/jury/">Judging</a></li>
-    <li><a href="/history/">History</a></li>
-    <li><a href="/contact/">Contact</a></li>
-  </ul>
-</nav>
-
-<div class="hero">
-  <div class="container">
-    <h2>Young ideas for how people and goods move — judged by the people who build the methods.</h2>
-    <p class="lead">NCYTI (NSMDI) is the Czech national competition for young transport innovators. Every year, secondary-school students and early-career entrants submit ideas and projects on transport and mobility; an independent judging panel evaluates every entry in writing, and the winners are recognised at the annual awards meeting.</p>
-  </div>
-</div>
-
-<div class="container">
-  <div class="grid">
-    <div class="card">
-      <div class="tagline">Who can enter</div>
-      <h3>Two entry categories</h3>
-      <p>An <strong>Ideas category</strong> for secondary-school students and an <strong>Early-Career Projects category</strong> for entrants up to age 26. Entries are submitted individually or in teams; each entry is evaluated against the published judging criteria.</p>
-    </div>
-    <div class="card">
-      <div class="tagline">How it is judged</div>
-      <h3>A five-member independent panel</h3>
-      <p>Each edition is judged by a five-member panel. Members serve in a personal capacity, declare any conflicts of interest, evaluate all entries in writing, and deliberate by video conference so that members joining from abroad can participate fully.</p>
-    </div>
-    <div class="card">
-      <div class="tagline">2025 (13th) edition</div>
-      <h3>Judging complete</h3>
-      <p>The 2025 panel evaluated <strong>22 eligible submissions</strong> in July and August 2025; its recommendation was ratified by the Standing Committee on <strong>28 August 2025</strong>.</p>
+  <div class="top-strip">
+    <div class="container top-strip-inner">
+      <span class="top-strip-label">Est. 2013 · Czech Republic</span>
+      <span class="top-strip-mark">National Competition</span>
     </div>
   </div>
 
-  <div class="highlight">
-    <h3>Meet the 2025 judging panel</h3>
-    <p>Five judges from the Czech Republic, Austria, Hungary and Poland — including Ms. Yanxi Liu, Research Fellow of the National Transport Research Programme (NTRP) and author of the MTRS ranking-stability test.</p>
-    <p style="margin-top:12px;"><a class="btn" href="/2025/judging-panel/">View the 2025 panel</a></p>
-  </div>
-</div>
-
-<section class="block">
-  <div class="container">
-    <h2>About the competition</h2>
-    <p>NCYTI was founded in 2013 by the Standing Committee of the competition and has been held every year since — the 2025 edition was the thirteenth. The competition exists to surface practical ideas for transport and mobility from young people, and to connect the strongest entries with practitioners in planning, operations and research.</p>
-    <ul class="plain">
-      <li><strong>Organiser:</strong> the Standing Committee of the National Competition for Young Transport Innovators (NCYTI Standing Committee).</li>
-      <li><strong>Judging:</strong> an independent five-member panel per edition; written evaluations, video-conference deliberation, ratified recommendations.</li>
-      <li><strong>Recognition:</strong> winners are recognised at the annual awards meeting and their work is presented to the competition's partner networks.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="block alt">
-  <div class="container">
-    <h2>Timeline of the 2025 (13th) edition</h2>
-    <table class="data">
-      <tr><th>Stage</th><th>When</th></tr>
-      <tr><td>Call for entries opens</td><td>Spring 2025</td></tr>
-      <tr><td>Entry deadline; eligibility screening</td><td>June 2025</td></tr>
-      <tr><td>Panel evaluation (written evaluations; deliberation by video conference)</td><td>July – August 2025</td></tr>
-      <tr><td>Recommendation ratified by the Standing Committee</td><td>28 August 2025</td></tr>
-      <tr><td>Awards meeting and announcement of results</td><td>Autumn 2025</td></tr>
-    </table>
-  </div>
-</section>
-
-<div class="cta">
-  <div class="container">
-    <a class="btn" href="/history/">Competition history</a>
-    <a class="btn ghost" href="/contact/">Contact the Standing Committee</a>
-  </div>
-</div>
-
-<footer class="sitefoot">
-  <div class="container">
-    <div>
-      <p><strong>National Competition for Young Transport Innovators (NCYTI)</strong></p>
-      <p>Národní soutěž mladých dopravních inovátorů (NSMDI) · Founded 2013</p>
+  <header class="header-main" id="home">
+    <div class="container brand-row">
+      <div class="brand-copy">
+        <h1>National Competition for Young Transport Innovators</h1>
+        <p>Národní soutěž mladých dopravních inovátorů · NSMDI</p>
+      </div>
+      <div class="edition-stamp" aria-hidden="true">
+        13<br>EDITIONS
+      </div>
     </div>
-    <div>
-      <p>Standing Committee of the NCYTI</p>
-      <p><a href="mailto:info@nsmdi-competition.org">info@nsmdi-competition.org</a></p>
+  </header>
+
+  <nav class="navigation">
+    <div class="container nav-inner">
+      <a href="#home" class="nav-brand">NCYTI</a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#panel">2025 Judging Panel</a>
+        <a href="#judging">Judging</a>
+        <a href="#history">History</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
-  </div>
-</footer>
+  </nav>
+
+  <main>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-kicker">National Competition</div>
+          <h2>Young ideas for how people and goods move — judged by the people who build the methods.</h2>
+          <p class="hero-description">
+            NCYTI (NSMDI) is the Czech national competition for young transport innovators. Every year, secondary-school students and early-career entrants submit ideas and projects on transport and mobility; an independent judging panel evaluates every entry in writing, and the winners are recognised at the annual awards meeting.
+          </p>
+          <div class="hero-stats">
+            <span class="stat-tag">13 editions</span>
+            <span class="stat-tag">Annual</span>
+            <span class="stat-tag highlight">2025 (13th) edition complete</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-section">
+      <div class="container feature-grid">
+
+        <article class="feature-card">
+          <div class="card-number">01</div>
+          <h3>Who can enter</h3>
+          <h4>Two entry categories</h4>
+          <p>
+            An <strong>Ideas category</strong> for secondary-school students and an <strong>Early-Career Projects category</strong> for entrants up to age 26. Entries are submitted individually or in teams; each entry is evaluated against the published judging criteria.
+          </p>
+        </article>
+
+        <article class="feature-card" id="judging">
+          <div class="card-number">02</div>
+          <h3>How it is judged</h3>
+          <h4>A five-member independent panel</h4>
+          <p>
+            Each edition is judged by a five-member panel. Members serve in a personal capacity, declare any conflicts of interest, evaluate all entries in writing, and deliberate by video conference so that members joining from abroad can participate fully.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <div class="card-number">03</div>
+          <h3>2025 (13th) edition</h3>
+          <h4>Judging complete</h4>
+          <p>
+            The 2025 panel evaluated <strong>22 eligible submissions</strong> in July and August 2025; its recommendation was ratified by the Standing Committee on <strong>28 August 2025</strong>.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="panel-section" id="panel">
+      <div class="container panel-layout">
+
+        <div class="panel-copy">
+          <div class="section-kicker">2025 · Judging panel</div>
+          <h2 class="section-title">Meet the 2025 judging panel</h2>
+          <p>
+            Five judges from the Czech Republic, Austria, Hungary and Poland — including Ms. Yanxi Liu, Research Fellow of the National Transport Research Programme (NTRP) and author of the MTRS ranking-stability test.
+          </p>
+          <div class="button-row">
+            <a href="#contact" class="block-button button-orange">
+              View the 2025 panel
+              <span class="button-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="photo-wall" aria-hidden="true">
+          <div class="award-photo-slot"></div>
+          <div class="award-photo-slot"></div>
+          <div class="award-photo-slot"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="about-section" id="history">
+      <div class="container about-grid">
+
+        <div class="about-intro">
+          <div class="section-kicker">About NCYTI</div>
+          <h2 class="section-title">About the competition</h2>
+          <p>
+            NCYTI was founded in 2013 by the Standing Committee of the competition and has been held every year since — the 2025 edition was the thirteenth. The competition exists to surface practical ideas for transport and mobility from young people, and to connect the strongest entries with practitioners in planning, operations and research.
+          </p>
+          <div class="about-decoration"></div>
+        </div>
+
+        <div class="about-details">
+
+          <div class="detail-item">
+            <div class="detail-label">Organiser:</div>
+            <p>
+              the Standing Committee of the National Competition for Young Transport Innovators (NCYTI Standing Committee).
+            </p>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Judging:</div>
+            <p>
+              an independent five-member panel per edition; written evaluations, video-conference deliberation, ratified recommendations.
+            </p>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Recognition:</div>
+            <p>
+              winners are recognised at the annual awards meeting and their work is presented to the competition's partner networks.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-section">
+      <div class="container">
+
+        <div class="timeline-header">
+          <div class="section-kicker">Edition milestones</div>
+          <h2 class="section-title">Timeline of the 2025 (13th) edition</h2>
+        </div>
+
+        <div class="timeline-track">
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-stage">Call for entries opens</div>
+            <div class="timeline-when">Spring 2025</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-stage">Entry deadline; eligibility screening</div>
+            <div class="timeline-when">June 2025</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-stage">Panel evaluation (written evaluations; deliberation by video conference)</div>
+            <div class="timeline-when">July – August 2025</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-stage">Recommendation ratified by the Standing Committee</div>
+            <div class="timeline-when">28 August 2025</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-stage">Awards meeting and announcement of results</div>
+            <div class="timeline-when">Autumn 2025</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-section">
+      <div class="container closing-grid">
+
+        <a href="#history" class="closing-card history">
+          <h3>Competition history</h3>
+          <span class="card-arrow">↗</span>
+        </a>
+
+        <a href="#contact" class="closing-card contact">
+          <h3>Contact the Standing Committee</h3>
+          <span class="card-arrow">↗</span>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container">
+
+      <div class="footer-main">
+
+        <div>
+          <h3 class="footer-title">National Competition for Young Transport Innovators (NCYTI)</h3>
+          <p class="footer-subtitle">
+            Národní soutěž mladých dopravních inovátorů (NSMDI) · Founded 2013
+          </p>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Standing Committee of the NCYTI</h4>
+          <a href="mailto:info@nsmdi-competition.org">info@nsmdi-competition.org</a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-accent" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span>NCYTI · NSMDI</span>
+      </div>
+
+    </div>
+  </footer>
 
 </body>
 </html>
